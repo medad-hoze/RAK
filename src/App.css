@@ -1,0 +1,111 @@
+
+
+
+.App {
+  height: 100vh;
+   width: 100vw;
+    display:flex;
+  text-align: center;
+  
+  
+}
+
+.rightSection{
+  display: 'fixed';
+  justify-content: space-between;
+  background-color:white;
+  width: 100%;
+   height: 10%;
+}
+
+.leftSectionsmall{
+  width: 50%;
+   height: 100%;
+   background-color:#f0f0f0
+}
+
+.leftSectionlarge{
+  width: 75%;
+   height: 75%;
+   background-color:#f0f0f0
+}
+
+.webmapLarge{
+  height: 100vh;
+  width: 100vh;
+}
+
+.webmap{
+  /* absolute */
+  height: 70vh;
+  width: 70vh;
+
+}
+
+.spacer {
+  background-color: black;
+  width: 16px; /* adjust as needed */
+}
+
+
+.brown-section {
+  display: flex;
+  align-items: baseline;
+  flex: 0.7;
+  background-color: peru;
+}
+
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-input-container{
+  content: "Choose a GeoJSON file";
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #007acc;
+  color: #ffffff;
+  border: 1px solid #007acc;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.file-input-container:hover::before {
+  background-color: #005999;
+  border-color: #005999;
+}
+
+
+.reSizeButton{
+  background-color: gray;
+  color: white;
+  border: black;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.parent-element {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+

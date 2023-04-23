@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAK Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.43/esri/css/esri.css">
+        
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://js.arcgis.com/3.43/"></script>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {});
+    });
+        var map;
+
+        require(["esri/map", "dojo/domReady!"], function(Map) {
+            map = new Map("map", {
+            basemap: "topo-vector",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+            center: [-122.45, 37.75], // longitude, latitude
+            zoom: 13
+            });
+        });
+
+        var btnsDisplay = null
+        var mapDisplay = null
+        var mapDivDisplay = null
+        function toggleMapSize() {
+            
+            var x = document.getElementById("btns");
+            var map = document.getElementById("map");
+            var mapDiv = document.getElementById("mapDiv");
+            var sideBar = document.getElementById("sideBar");
+
+            var floatBtn =document.getElementById("floatBtn");
+            if (x.style.display === "none") {
+                x.style.display = btnsDisplay;
+                map.style = mapDisplay;
+                mapDiv.style = mapDivDisplay;
+                mapDiv.style.height = "900px";
+                map.style.height = "900px";
+                sideBar.style.display = "block";
+                floatBtn.innerText = "add";  
+            } else {
+                btnsDisplay = x.style.display
+                mapDisplay = map.style;
+                mapDivDisplay = mapDiv.style;
+                x.style.display = "none";
+                sideBar.style.display = "none";
+                mapDiv.style.height = "985px";
+                map.style.height = "985px";
+                map.style.width = "100%";
+                mapDiv.style.width = "100%";
+                map.style.marginTop = "20px";
+                floatBtn.innerText = "remove";     
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+
+
+
+
+    <div class="center" >
+            <!-- Page Content goes here -->
+            
+            <nav class="nav-wrapper" style = "height: 85px; overflow: hidden; background-color: #c3a383;">
+
+                <div style = "height: 85px; overflow: hidden;">
+                    <img src="..\src\images\rak.png" style="margin-left:-12px; height: 100%; display: block;">
+                </div>
+            </nav>
+            
+            <div id="btns" class="row valign-wrapper" style ="height: 85px;">
+
+                    <button class='waves-effect waves-light btn-large grey' >add layer</button>
+                    <div class="spacer"></div>
+                    <button class='waves-effect waves-light btn-large grey' >add layer</button>
+                    <div class="spacer"></div>
+                    <button class='waves-effect waves-light btn-large grey' >add layer</button>
+                    <div class="spacer"></div>
+                    <button class='waves-effect waves-light btn-large grey' >add layer</button>
+            </div>
+
+            <div class="row" style="height: 100%; margin-top: -20px;">
+                <a onclick="toggleMapSize()" class="btn-floating btn-large waves-effect waves-light grey"
+                style="position: absolute; left:3px">
+                <i id="floatBtn" class="material-icons">add</i>
+                </a>
+
+                <div id="sideBar" class="col s3" style="background: #c3a383; height: 900px;">
+
+
+
+                </div>
+                
+                <div id="mapDiv" class="col s9" style = "height: 900px;">
+                    <div id="map" style = "height: 900px;">
+                    </div> 
+                </div>
+            </div>
+    </div>
+
+
+
+ 
+
+
+</body>
+</html>
+
+
+
+<style>
+
+.center {
+  margin: auto;
+  width: 99%;
+  height: 100%;
+  padding: 10px;
+}
+
+body {
+    background-image: url("./src/images/bg.png");
+}
+
+.logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.logo>img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}  
+
+.navbar-bg {
+  background-image: url("..\src\images\rak.png");
+  background-size: cover;
+}
+
+
+
+
+
+.App {
+  height: 100vh;
+   width: 100vw;
+    display:flex;
+  text-align: center;
+  
+  
+}
+
+.rightSection{
+  display: 'fixed';
+  justify-content: space-between;
+  background-color:white;
+  width: 100%;
+   height: 10%;
+}
+
+.leftSectionsmall{
+  width: 50%;
+   height: 100%;
+   background-color:#f0f0f0
+}
+
+.leftSectionlarge{
+  width: 75%;
+   height: 75%;
+   background-color:#f0f0f0
+}
+
+.webmapLarge{
+  height: 100vh;
+  width: 100vh;
+}
+
+.webmap{
+  /* absolute */
+  height: 70vh;
+  width: 70vh;
+
+}
+
+.spacer {
+  background-color: black;
+  width: 16px; /* adjust as needed */
+}
+
+
+.brown-section {
+  display: flex;
+  align-items: baseline;
+  flex: 0.7;
+  background-color: peru;
+}
+
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-input-container{
+  content: "Choose a GeoJSON file";
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #007acc;
+  color: #ffffff;
+  border: 1px solid #007acc;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.file-input-container:hover::before {
+  background-color: #005999;
+  border-color: #005999;
+}
+
+
+.reSizeButton{
+  background-color: gray;
+  color: white;
+  border: black;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.parent-element {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+</style>
+
+
